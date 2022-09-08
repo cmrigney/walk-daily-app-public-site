@@ -250,6 +250,61 @@ nav > ul li a:active {
 	align-content: flex-start;
 }
 
+.emailContainer {
+  margin-top: 42px;
+}
+
+.caption {
+  color: $app-description-color;
+  font-size: 1.5rem;
+  margin: 12px;
+}
+
+.emailRow {
+  filter: $drop-shadow;
+  width: 400px;
+  margin-top: 8px;
+  display: flex;
+}
+
+.email {
+  flex: 1;
+  font-size: 2rem;
+  padding: 12px;
+  border-bottom-left-radius: 16px;
+  border-top-left-radius: 16px;
+}
+
+.submitEmail {
+  font-size: 2rem;
+  margin: 0;
+  border-top-right-radius: 16px;
+  border-bottom-right-radius: 16px;
+  padding: 16px 32px;
+  background-color: $accent-color;
+  color: $button-text-color;
+}
+
+@media only screen and (max-width: 435px) {
+  .emailRow {
+    width: 300px;
+    margin-right: auto;
+    margin-left: auto;
+  }
+
+  .caption {
+    max-width: 300px;
+  }
+
+  .email {
+    font-size: 1.4rem;
+  }
+
+  .submitEmail {
+    font-size: 1.4rem;
+  }
+}
+
 @media only screen and (max-width: 992px) {
 
 	.appInfo {

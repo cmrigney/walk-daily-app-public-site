@@ -50,12 +50,25 @@
                                 {{ site.app_description }}
                             </p>
                         </div>
+                        {% if site.playstore_link or site.appstore_link %}
                         <div class="downloadButtonsContainer">
                             {% if site.playstore_link %}
                                 <a class="playStoreLink" href="{{site.playstore_link}}"><img class="playStore" src="assets/playstore.png"></a>
                             {% endif %}
+                            {% if site.appstore_link %}
                             <a class="appStoreLink" href="{{site.appstore_link}}"><img class="appStore" src="assets/appstore.png"></a>
+                            {% endif %}
                         </div>
+                        {% endif %}
+                        {% if site.enable_mailing_list %}
+                        <div class="emailContainer">
+                          <div class="emailRow">
+                            <input type="email" id="email" class="email" placeholder="Enter your email" />
+                            <button type="button" class="submitEmail">Sign Up</button>
+                          </div>
+                          <p class="caption">Sign up to be invited to the beta. Don't worry, no spam.</p>
+                        </div>
+                        {% endif %}
                     </div>
                     {% include features.html %}
                     {% include footer.html %}
