@@ -62,10 +62,11 @@
                         {% endif %}
                         {% if site.enable_mailing_list %}
                         <div class="emailContainer">
-                          <div class="emailRow">
+                          <form class="emailRow">
                             <input type="email" id="email" class="email" placeholder="Enter your email" />
-                            <button type="button" class="submitEmail">Sign Up</button>
-                          </div>
+                            <input type="hidden" id="mailingList" value="{{ site.mailing_list_url }}" />
+                            <button type="submit" id="submitEmail" class="submitEmail">Sign Up</button>
+                          </form>
                           <p class="caption">Sign up to be invited to the beta. Don't worry, no spam.</p>
                         </div>
                         {% endif %}
@@ -76,5 +77,32 @@
                 </div>
             </div>
         </div>
+        <script>
+          let submitButton = document.getElementById("submitEmail");
+          let mailingList = document.getElementById("mailingList");
+
+          if(submitButton && mailingList) {
+            submitButton.onclick = function(ev) {
+              ev.preventDefault();
+              let email = document.getElementById("email").value.trim();
+              if(!email) {
+                return;
+              }
+
+              submitButton.disabled = true;
+              submitButton.innerHTML = "Sending..."
+
+              fetch(mailingList.value, {
+                method: "POST",
+                headers: {
+                  'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'
+                },
+                body: "Email=" + encodeURIComponent(email)
+              }).then(() => {
+                submitButton.innerHTML = "Sent!"
+              });
+            }
+          }
+        </script>
 </body>
 </html>

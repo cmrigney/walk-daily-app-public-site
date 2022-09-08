@@ -283,6 +283,14 @@ nav > ul li a:active {
   padding: 16px 32px;
   background-color: $accent-color;
   color: $button-text-color;
+
+  &:hover {
+    background-color: darken($accent-color, 10%);
+  }
+
+  &:disabled {
+    background-color: desaturate($accent-color, 40%);
+  }
 }
 
 @media only screen and (max-width: 435px) {
