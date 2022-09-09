@@ -63,7 +63,7 @@
                         {% if site.enable_mailing_list %}
                         <div class="emailContainer">
                           <form class="emailRow">
-                            <input type="email" id="email" class="email" placeholder="Enter your email" />
+                            <input type="email" id="email" class="email" placeholder="Enter your email" spellcheck="false" autocorrect="off" autocapitalize="off" />
                             <input type="hidden" id="mailingList" value="{{ site.mailing_list_url }}" />
                             <button type="submit" id="submitEmail" class="submitEmail">Sign Up</button>
                           </form>
