@@ -14,6 +14,23 @@
 		<meta name="apple-itunes-app" content="app-id={{ site.ios_app_id }}">
 	{% endif %}
 
+  {% if site.social_title %}
+    <meta property="og:title" content="{{ site.social_title }}">
+  {% endif %}
+  {% if site.social_url %}
+    <meta property="og:url" content="{{ site.social_url }}" />
+  {% endif %}
+  {% if site.social_description %}
+    <meta property="og:description" content="{{ site.social_description }}">
+    <meta name="twitter:description" content="{{ site.social_description }}">
+  {% endif %}
+  {% if site.social_image %}
+    <meta property="og:image" content="{{ site.social_image | relative_url }}">
+    <meta property="twitter:image" content="{{ site.social_image | relative_url }}">
+  {% endif %}
+  <meta name="twitter:card" content="summary_large_image">
+  <meta property="og:type" content="website" />
+
 	<script src="https://kit.fontawesome.com/d71c3100af.js" crossorigin="anonymous"></script>
 	<link rel="stylesheet" href="{{ '/main.css' | relative_url }}">
 </head>
