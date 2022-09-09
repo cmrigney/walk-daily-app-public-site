@@ -13,7 +13,7 @@ presskit_download_link                    :                                     
 app_icon                                  : assets/app-icon.png                      # Automatically populates if not set and if iOS app ID is set.  Otherwise enter path to icon file manually.
 app_name                                  : Walk Daily - Bible Reading                                          # Automatically populates if not set and if iOS app ID is set.  Otherwise enter manually.
 app_price                                 : Free                                          # Automatically populates if not set and if iOS app ID is set.  Otherwise enter manually.
-app_description                           : Bible reading plans at your fingertips.
+app_description                           : Purposeful Bible Reading. Tools Included.
 
 enable_smart_app_banner                   : false                                      # Set to true to show a smart app banner at top of page on mobile devices.
 
@@ -37,11 +37,11 @@ youtube_username                          :
 features                                  :
 
   - title                                 : Choose Your Reading Plan
-    description                           : Many popular reading plans bundled with more to come. Already started a plan? Pick up where you left off.
+    description                           : Many popular reading plans bundled, with more to come. Already started a plan? Pick up where you left off.
     fontawesome_icon_name                 : book
     
   - title                                 : Track Your Progress Through the Plan
-    description                           : Check off readings you complete each day. Don't worry if you fall behind, we don't lose track.
+    description                           : Check off readings you complete each day. Don't worry if you fall behind, the app will keep track.
     fontawesome_icon_name                 : list-check
 
   - title                                 : Progress Highlights
@@ -49,10 +49,10 @@ features                                  :
     fontawesome_icon_name                 : chart-line
 
   - title                                 : Daily Reminders
-    description                           : We can remind you to read each day. Pick a time of day that works for you.
+    description                           : The app can remind you to read each day. Pick a time of day that works for you.
     fontawesome_icon_name                 : bell
 
-  - title                                 : Take Notes
+  - title                                 : Take Notes (Pro)
     description                           : Record insights as you read and refer back to them later.
     fontawesome_icon_name                 : note-sticky
 
@@ -60,7 +60,7 @@ features                                  :
     description                           : Share what you've read with a friend or accountability partner. Optionally include your notes.
     fontawesome_icon_name                 : share-from-square
 
-  - title                                 : iCloud Sync
+  - title                                 : iCloud Sync (Pro)
     description                           : Sync all of your data to iCloud and ensure all of your devices are in sync.
     fontawesome_icon_name                 : cloud
   
