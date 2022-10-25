@@ -5,7 +5,7 @@ include_in_header: false
 ---
 
 **Last updated**  
-September 5 2022
+October 24 2022
 
 **Terms & Conditions**
 
@@ -25,11 +25,43 @@ With respect to Cody Rigney’s responsibility for your use of the app, when you
 
 At some point, we may wish to update the app. The app is currently available on iOS – the requirements for the system(and for any additional systems we decide to extend the availability of the app to) may change, and you’ll need to download the updates if you want to keep using the app. Cody Rigney does not promise that it will always update the app so that it is relevant to you and/or works with the iOS version that you have installed on your device. However, you promise to always accept updates to the application when offered to you, We may also wish to stop providing the app, and may terminate use of it at any time without giving notice of termination to you. Unless we tell you otherwise, upon any termination, (a) the rights and licenses granted to you in these terms will end; (b) you must stop using the app, and (if needed) delete it from your device.
 
+**Subscriptions**
+
+Some parts of the Service are billed on a subscription basis ("Subscription(s)"). You will be billed in advance on a recurring and periodic basis ("Billing Cycle"). Billing cycles are set either on a monthly or annual basis, depending on the type of subscription plan you select when purchasing a Subscription.
+
+At the end of each Billing Cycle, your Subscription will automatically renew under the exact same conditions unless you cancel it or Cody Rigney cancels it. You may cancel your Subscription renewal either through the app, through your Apple subscriptions, or by contacting Cody Rigney at walkdailybiblereading@gmail.com.
+
+A valid payment method, including credit card, is required to process the payment for your Subscription. You shall provide Cody Rigney with accurate and complete billing information including full name, address, state, zip code, telephone number, and a valid payment method information. By submitting such payment information, you automatically authorize Cody Rigney to charge all Subscription fees incurred through your account to any such payment instruments.
+
+Should automatic billing fail to occur for any reason, you will enter a grace period for 16 days in which Subscription services will still remain available. If automatic billing still fails after this period, your Subscription will be cancelled and Subscription services will no longer be available.
+
+**Free Trial**
+
+Cody Rigney may, at sole discretion, offer a Subscription with a free trial for a limited period of time ("Free Trial").
+
+You may be required to enter your billing information in order to sign up for the Free Trial.
+
+If you do enter your billing information when signing up for the Free Trial, you will not be charged by Cody Rigney until the Free Trial has expired. On the last day of the Free Trial period, unless you cancelled your Subscription, you will be automatically charged the applicable Subscription fees for the type of Subscription you have selected.
+
+At any time and without notice, Cody Rigney reserves the right to (i) modify the terms and conditions of the Free Trial offer, or (ii) cancel such Free Trial offer.
+
+**Fee Changes**
+
+Cody Rigney, in sole discretion and at any time, may modify the Subscription fees for the Subscriptions. Any Subscription fee change will become effective at the end of the then-current Billing Cycle.
+
+Cody Rigney will provide you with a reasonable prior notice of any change in Subscription fees to give you an opportunity to terminate your Subscription before such change becomes effective.
+
+Your continued use of the Service after the Subscription fee change comes into effect constitutes your agreement to pay the modified Subscription fee amount.
+
+**Refunds**
+
+Except when required by law, paid Subscription fees are non-refundable.
+
 **Changes to This Terms and Conditions**
 
 I may update our Terms and Conditions from time to time. Thus, you are advised to review this page periodically for any changes. I will notify you of any changes by posting the new Terms and Conditions on this page.
 
-These terms and conditions are effective as of 2022-09-05
+These terms and conditions are effective as of 2022-10-24
 
 **Contact Us**
 
