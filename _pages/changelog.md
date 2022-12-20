@@ -6,4 +6,6 @@ include_in_header: true
 
 # What's New
 
-The app is still in a testing phase and not yet released!
+## December 19th, 2022
+
+Walk Daily has been released on the Apple App Store! Download it [here](https://apps.apple.com/us/app/walk-daily-bible-reading/id1643083018).
