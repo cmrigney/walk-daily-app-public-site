@@ -1,5 +1,10 @@
-import React, { useRef, useState } from "https://esm.sh/react?module";
-import ReactDOM from "https://esm.sh/react-dom?module";
+import React, {
+  useRef,
+  useState,
+  useEffect,
+  useId,
+} from "https://esm.sh/react?module";
+import ReactDOM, { createPortal } from "https://esm.sh/react-dom?module";
 import htm from "https://esm.sh/htm?module";
 
 const html = htm.bind(React.createElement);
@@ -52,6 +57,137 @@ function ReadingTable(props) {
   </table>`;
 }
 
+function Modal(props) {
+  const { open, title, children, onClose, onAction, actionText } = props;
+  const modalId = useId();
+  const labelId = useId();
+  const modalRef = useRef(null);
+
+  useEffect(() => {
+    modalRef.current = new bootstrap.Modal(
+      document.getElementById(modalId),
+      {}
+    );
+  }, []);
+
+  useEffect(() => {
+    if (open) {
+      modalRef.current.show();
+    } else {
+      modalRef.current.hide();
+    }
+  }, [open]);
+
+  return createPortal(
+    html`<div
+      class="modal fade"
+      id=${modalId}
+      tabindex="-1"
+      aria-labelledby=${labelId}
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id=${labelId}>${title}</h1>
+            <button
+              type="button"
+              class="btn-close"
+              aria-label="Close"
+              onClick=${() => onClose()}
+            ></button>
+          </div>
+          <div class="modal-body">${children}</div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              onClick=${() => onClose()}
+            >
+              Close
+            </button>
+            <button
+              type="button"
+              class="btn btn-primary"
+              onClick=${() => onAction()}
+            >
+              ${actionText}
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>`,
+    document.body
+  );
+}
+
+function AddBibleBookButton(props) {
+  const [showGenerateModal, setShowGenerateModal] = useState(false);
+  const { cadence, onAddPassages } = props;
+  const [books, setBooks] = useState([]); // ['Genesis', 'Exodus', ...]
+  const [book, setBook] = useState("Genesis");
+
+  const action = () => {
+    const newPassages = [];
+    const bookIdx = books.findIndex((b) => b.name === book);
+    for (let i = 0; i < books[bookIdx].chapters; i++) {
+      newPassages.push(`${book} ${i + 1}`);
+    }
+    onAddPassages(newPassages);
+    setShowGenerateModal(false);
+  };
+
+  useEffect(() => {
+    fetch("/bible-books.json")
+      .then((res) => res.json())
+      .then((bks) => {
+        setBooks(
+          bks.map((b) => ({
+            name: b.name,
+            chapters: b.chapters,
+          }))
+        );
+      });
+  }, []);
+
+  return html`<button
+      type="button"
+      className="btn btn-outline-primary float-end"
+      onClick=${() => setShowGenerateModal(true)}
+    >
+      Add Bible Book
+    </button>
+    <${Modal}
+      open=${showGenerateModal}
+      title="Add Bible Book"
+      onClose=${() => setShowGenerateModal(false)}
+      onAction=${action}
+      actionText="Add Book"
+    >
+      <div className="mb-3">
+        <label for="book" className="form-label">Bible Book</label>
+        <select
+          className="form-select"
+          id="book"
+          aria-describedby="bookHelp"
+          value=${book}
+          onChange=${(e) => setBook(e.target.value)}
+        >
+          ${books.map(
+            (b) =>
+              html`<option value=${b.name}>
+                ${b.name} - ${b.chapters} chapters
+              </option>`
+          )}
+        </select>
+        <div id="bookHelp" className="form-text">
+          Each chapter will be added
+          per${cadence === "daily" ? " day" : " week"}.
+        </div>
+      </div>
+    <//>`;
+}
+
 function App() {
   const fileInput = useRef(null);
   const [resetKey, setResetKey] = useState(0);
@@ -76,7 +212,7 @@ function App() {
   const isEmbedded = !!window.planCompletionHandler;
 
   const restart = () => {
-    if(confirm("Are you sure you want to start over?") === false) return;
+    if (confirm("Are you sure you want to start over?") === false) return;
     setName("");
     setDesc("");
     setAuthor("");
@@ -92,15 +228,29 @@ function App() {
     setReadings(newReadings);
   };
 
+  const addPassages = (passages) => {
+    const newReadings = [...readings];
+    passages.forEach((p, idx) => {
+      newReadings.push({
+        title: `${cadence === "daily" ? "Day" : "Week"} ${readings.length + idx + 1}`,
+        ...(cadence === "daily"
+          ? { day: readings.length + idx + 1 }
+          : { week: readings.length + idx + 1 }),
+        passages: [p],
+      });
+    });
+    setReadings(newReadings);
+  };
+
   const onCadenceChange = (e) => {
     setCadence(e.target.value);
     if (e.target.value === "daily") {
       setReadings(
-        readings.map((r, idx) => ({ ...r, day: idx + 1, week: undefined }))
+        readings.map((r, idx) => ({ ...r, title: `Day ${idx + 1}`, day: idx + 1, week: undefined }))
       );
     } else {
       setReadings(
-        readings.map((r, idx) => ({ ...r, day: undefined, week: idx + 1 }))
+        readings.map((r, idx) => ({ ...r, title: `Week ${idx + 1}`, day: undefined, week: idx + 1 }))
       );
     }
   };
@@ -132,6 +282,7 @@ function App() {
   };
 
   const exportFile = () => {
+    // TODO: validate
     const plan = {
       id: idFromName(name),
       website: "",
@@ -289,6 +440,11 @@ function App() {
         >
           <i className="fa-solid fa-minus"></i> Remove Passage
         </button>
+        ${(type === "wholebible" || type === 'partialbible') &&
+        html`<${AddBibleBookButton}
+          cadence=${cadence}
+          onAddPassages=${addPassages}
+        />`}
       </div>
     </form>
     <${ReadingTable}
