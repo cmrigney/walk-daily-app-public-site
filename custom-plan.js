@@ -66,7 +66,9 @@ function Modal(props) {
   useEffect(() => {
     modalRef.current = new bootstrap.Modal(
       document.getElementById(modalId),
-      {}
+      {
+        backdrop: 'static',
+      }
     );
   }, []);
 
